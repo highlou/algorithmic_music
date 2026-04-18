@@ -1,7 +1,7 @@
 # Created 2026-04-17
 
 # Object files
-.o
+*.o
 
 # The target application
 app
