@@ -13,7 +13,9 @@ LIB := -lSDL2
 
 TARGET := app
 
-all: $(TARGET)
+all: build
+
+build: $(TARGET)
 
 $(TARGET): $(OBJ)
 	$(CXX) -o $(TARGET) $(OBJ) $(CFLAGS) $(LIB)
