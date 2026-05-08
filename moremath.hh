@@ -1,7 +1,7 @@
 /* Created 2026-04-18 */
 
-#ifndef ALGORITHMIC_MUSIC_MOREMATH_HH
-#define ALGORITHMIC_MUSIC_MOREMATH_HH
+#ifndef __ALGORITHMIC_MUSIC_MOREMATH_HH__
+#define __ALGORITHMIC_MUSIC_MOREMATH_HH__
 
 #include <utility>
 
@@ -22,4 +22,4 @@ namespace moremath
     double sawtooth(double x);
 }
 
-#endif // ALGORITHMIC_MUSIC_MOREMATH_HH
+#endif // __ALGORITHMIC_MUSIC_MOREMATH_HH__
