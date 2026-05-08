@@ -33,8 +33,6 @@ namespace syn
             instruments.back()->Init(signature.tempo, sampleRate);
         }
         
-        // waveGenTriangle.phase = 0.0;
-        
         return CheckSelf();
     }
 
