@@ -20,9 +20,6 @@ namespace moremath
 
     double triangle(double x);
     double sawtooth(double x);
-    
-    // template<class T>
-    // std::pair<T, T> simplifyFraction(const std::pair<T, T>& fraction);
 }
 
 #endif // ALGORITHMIC_MUSIC_MOREMATH_HH
