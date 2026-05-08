@@ -6,10 +6,12 @@ GXX := g++
 
 CFLAGS := -std=c++20
 CFLAGS += -Wall -Wextra -Wpedantic -Wshadow
+CFLAGS += -ggdb
+CFLAGS += -fsanitize=leak
 
 SRC := $(wildcard *.cc)
 OBJ := $(patsubst %.cc,%.o,$(SRC))
-LIB := -lSDL2
+LIB := -lSDL2 -lsfml-audio
 
 TARGET := app
 
@@ -22,6 +24,9 @@ $(TARGET): $(OBJ)
 
 $(OBJ): %.o : %.cc
 	$(CXX) -c -o $@ $< $(CFLAGS)
+
+run: build
+	./$(TARGET)
 
 clean:
 	rm -f $(TARGET) $(OBJ)

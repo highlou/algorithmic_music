@@ -5,3 +5,9 @@
 
 # The target application
 app
+
+# Private TODO file
+TODO
+
+# Media
+*.wav
