@@ -32,12 +32,6 @@ namespace syn
         bool CheckSelf() const;
         std::vector<float> StepTrack(std::size_t trackNo, double delta);
         std::vector<float> Step(double delta);
-private:
-        // WaveGenerator waveGenTriangle{
-        //     .type = W_SINE
-        // };
-
-public:
         // if the track is finished, it'll output -INFINITY.
         float StepTrackSample(std::size_t trackNo);
     };
