@@ -77,6 +77,7 @@ namespace syn
                 notesReleased.push_back({ });
                 notesReleased.back().first = note;
                 notesReleased.back().second = timePlayed;
+                // TODO: implement tied next and tied prev
 
                 notesPlayed.erase(notesPlayed.begin() + i);
                 --i;
@@ -147,7 +148,7 @@ namespace syn
         // I know this math is very inefficient but oh well.
         const double x = totalTimePlaying;
         constexpr double a = 44.0;
-        constexpr double m = 0.02;
+        constexpr double m = 0.005;
         constexpr double n = 4.0;
         // Thanks ChatGPT for helping me to get the maximum value for the
         // function in the numerator for f(x).

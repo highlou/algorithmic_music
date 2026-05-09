@@ -1,0 +1,11 @@
+#ifndef __ALGORITHMIC_MUSIC_ALGORITHMIC_MUSIC_HH__
+#define __ALGORITHMIC_MUSIC_ALGORITHMIC_MUSIC_HH__
+
+// TODO: put MVP stuff here
+
+namespace algmzk
+{
+    
+}
+
+#endif // __ALGORITHMIC_MUSIC_ALGORITHMIC_MUSIC_HH__

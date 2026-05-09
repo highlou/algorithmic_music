@@ -14,6 +14,91 @@ namespace syn
 
     ////////////////////////////////////////////////////////////////////////////
 
+    //// CHORD /////////////////////////////////////////////////////////////////
+
+    std::vector<Note> Chord::GetNotes()
+    {
+        std::vector<Note> notes = {
+            Note{ .pitch = static_cast<std::uint8_t>(root) },
+            Note{ .pitch = static_cast<std::uint8_t>(root + 4) },
+            Note{ .pitch = static_cast<std::uint8_t>(root + 7) },
+        };
+
+        switch (inversion)
+        {
+            case 3:
+                notes[2].pitch += 12;
+                [[fallthrough]];
+            case 2:
+                notes[1].pitch += 12;
+                [[fallthrough]];
+            case 1:
+                notes[0].pitch += 12;
+                [[fallthrough]];
+            case 0:
+            default:
+                break;
+        }
+
+        switch (quality)
+        {
+            case CQ_DIMINISHED:
+                --notes[2].pitch;
+                [[fallthrough]];
+            case CQ_MINOR:
+                --notes[1].pitch;
+                break;
+            case CQ_AUGMENTED:
+                ++notes[2].pitch;
+                break;
+            default:
+                break;
+        }
+
+        std::int8_t ext_minmajaugdim = 0;
+        switch ((static_cast<std::uint8_t>(ext_extra) << 1) | static_cast<std::uint8_t>(ext_minor))
+        {
+            case 0b00:
+                ext_minmajaugdim = 0;
+                break;
+            case 0b01:
+                ext_minmajaugdim = -1;
+                break;
+            case 0b10:
+                ext_minmajaugdim = 1;
+                break;
+            case 0b11:
+                ext_minmajaugdim = -2;
+                break;
+        }
+
+        if (seventh)
+        {
+            notes.push_back(Note{
+                .pitch = static_cast<std::uint8_t>(root + 11 + ext_minmajaugdim)
+            });
+        }
+        else if (ninth)
+        {
+            notes.push_back(Note{
+                .pitch = static_cast<std::uint8_t>(root + 14 + ext_minmajaugdim)
+            });
+        }
+
+        for (auto& note : notes)
+        {
+            note.duration = duration;
+            note.intensity = intensity;
+            note.dotted = dotted;
+            note.tiedNext = tiedNext;
+            note.tiedPrev = tiedPrev;
+        }
+
+        return notes;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+
     std::pair<std::uint8_t, std::uint8_t> GetNoteLengthExp(Note note)
     {
         std::uint8_t top = 1;
